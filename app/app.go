@@ -2,7 +2,7 @@ package app
 
 import (
 	"embed"
-	"gohtmx/app/routes"
+	"html/template"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -17,8 +17,12 @@ func Start(assets *embed.FS) {
   renderer := &Renderer{}
   e.Renderer = renderer.New(assets)
 
-  e.GET("/", routes.Home)
-  e.POST("/increment", routes.Increment)
+
+  css, _ := assets.ReadFile("assets/index.css")
+  HomeData.Css = template.CSS(string(css))
+
+  e.GET("/", GetHome)
+  e.POST("/increment", PostIncrement)
 
   e.Logger.Fatal(e.Start(":1234"))
 }
