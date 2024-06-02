@@ -1,0 +1,45 @@
+{{ block "example" . }}
+<nav aria-label="breadcrumb">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li>Design</li>
+  </ul>
+</nav>
+
+<article>
+  {{ template "counter" . }}
+  <button data-tooltip="hello there" data-placement="bottom" class="outline" hx-target="#counter" hx-post="/increment">increment</button>
+</article>
+
+<details>
+  <summary role="button" class="outline">Contrast outline</summary>
+  <ul>
+    <li>Kangaroos are marsupials that are native to Australia.</li>
+    <li>They are known for their powerful hind legs, which they use to hop around.</li>
+    <li>Kangaroos can’t walk backwards due to the shape of their legs and tail.</li>
+    <li>Some species of kangaroos can leap up to 30 feet in a single bound.</li>
+  </ul>
+</details>
+
+<article>
+  <form>
+    <fieldset role="group">
+      <input name="email" type="email" placeholder="Email" autocomplete="email" />
+      <input name="password" type="password" placeholder="Password" />
+      <input type="submit" value="Log in" />
+    </fieldset>
+  </form>
+</article>
+
+<select name="favorite-cuisine" aria-label="Select your favorite cuisine..." required>
+  <option selected disabled value="">
+  Select your favorite cuisine...
+  </option>
+  <option>Italian</option>
+  <option>Japanese</option>
+  <option>Indian</option>
+  <option>Thai</option>
+  <option>French</option>
+</select>
+{{ end }}
